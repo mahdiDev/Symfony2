@@ -2,6 +2,7 @@
     "name": "saif/carnetadresse",
     "license": "proprietary",
     "type": "project",
+    "description" : "My First project"
     "autoload": {
         "psr-4": {
             "": "src/"
