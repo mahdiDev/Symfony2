@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Carnet d'adresses{% endblock %}</title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	{% stylesheets 'bundles/carnet/css/bootstrap.css' filter="cssrewrite" %}
+		<link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+	{% endstylesheets %}
+	{% stylesheets 'bundles/carnet/css/bootstrap-responsive.css' filter="cssrewrite" %}
+		<link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+	{% endstylesheets %}
+    
+	
+	{% stylesheets 'bundles/carnet/css/jquery-ui/jquery-ui-1.10.3.custom.css' filter="cssrewrite" %}
+		<link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+	{% endstylesheets %}
+    
+	
+	{% stylesheets 'bundles/carnet/css/global.css' filter="cssrewrite" %}
+		<link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+	{% endstylesheets %}
+	{% stylesheets 'bundles/carnet/css/global-responsive.css' filter="cssrewrite" %}
+		<link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+	{% endstylesheets %}
+    
+    {% block stylesheets %}
+	{% endblock %}
+    
+</head>
+
+{% block body %}{% endblock %}
+
+<body>
+	<div class="container" id="userprofil">
+    <div class="row">
+    	<div class="span6 offset6">
+			<div class="btn-group">
+            	<div id="salutation" class="btn">Bienvenue, 
+                    <a class="btn" href="{{ path('fos_user_profile_show') }}"><span>{{ app.user.username }}</span></a>
+                </div>
+                {% if app.user.id is defined %}
+                <a class="btn" href="{{ path('fos_user_profile_edit') }}"><i class="icon"><img src="{{ asset('bundles/carnet/images/settings.png') }}" style="margin-top: 14px;"></i></a>
+                {% endif %}
+            </div>
+            <div id="spandeconnexio"><a class="btn btn-medium btn-block btn-danger" href="{{ path('fos_user_security_logout') }}">Déconnexion<img src="{{ asset('bundles/carnet/images/log_out.png') }}"></a></div>
+		</div>
+    </div>
+    </div>
+    
+	<div class="container">
+    	<div class="row">
+            
+            {% block quicklinks %}
+            {% endblock %}
+            
+            <div class="span9" id="pagecontent">
+            {% block contenupage %}
+                <img src="{{ asset('bundles/carnet/images/1.png') }}">
+            {% endblock %}
+            </div>
+        </div>
+	</div>
+    
+	<div class="container">
+		<footer>
+			<p>&copy; 2016</p>
+		</footer>
+	</div>
+	
+	
+    
+    
+    {% javascripts '@CarnetBundle/Resources/public/js/jquery/jquery-2.0.3.js' %}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	
+    {% javascripts '@CarnetBundle/Resources/public/js/bootstrap.js' %}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	
+    {% javascripts '@CarnetBundle/Resources/public/js/jquery-ui/jquery-ui-1.10.3.custom.js' %}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+    
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+    
+		{% javascripts '@CarnetBundle/Resources/public/js/index.js' %}
+			<script type="text/javascript" src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+	
+	{% block javascript %}
+	{% endblock %}
+</body>
+</html>

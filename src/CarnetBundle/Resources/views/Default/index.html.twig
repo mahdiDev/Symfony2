@@ -1,0 +1,38 @@
+{% extends 'CarnetBundle::base.html.twig' %}
+
+{% block quicklinks %}
+<div class="span3" id="quicklinks">
+    <div class="bgtitre">Liens Rapides<img src="{{ asset('bundles/carnet/images/ptit_fleche.png') }}"></div>
+    <div class="contentquicklinks">
+        <div><a href="{{ path('carnet_contact_ajout') }}">Ajouter utilisateur</a><img src="{{ asset('bundles/carnet/images/tasks.png') }}"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block contenupage %}
+<table class="bordered">
+    <thead>
+        <tr>
+            <th>Nom.Prenom</th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            <th>Date d'ajout</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in contacts %}
+    <tr>
+        <td>{{ item.nom }}.{{ item.prenom }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.telephone }}</td>
+        <td>{{ item.createdAt|date('d-m-Y') }}</td>
+        <td>
+            <a href="{{ path('carnet_contact_update', {'id': item.id}) }}"><img src="{{ asset('bundles/carnet/images/settings.png') }}"></a>
+            <a href="{{ path('carnet_contact_delete', {'id': item.id}) }}"><img src="{{ asset('bundles/carnet/images/suprimer.png') }}"></a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

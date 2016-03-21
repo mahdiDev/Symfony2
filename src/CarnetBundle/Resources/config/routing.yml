@@ -1,0 +1,16 @@
+carnet_homepage:
+    path:     /
+    defaults: { _controller: CarnetBundle:Default:index }
+
+carnet_contact_ajout:
+    path:     /contact/add
+    defaults: { _controller: CarnetBundle:Default:add }
+
+carnet_contact_update:
+    path:     /contact/update/{id}
+    defaults: { _controller: CarnetBundle:Default:update }
+
+carnet_contact_delete:
+    path:     /contact/delete/{id}
+    defaults: { _controller: CarnetBundle:Default:delete }
+
