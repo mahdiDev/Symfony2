@@ -15,9 +15,6 @@ class ProfileType extends AbstractType
     public function getParent()
     {
         return 'FOS\UserBundle\Form\Type\ProfileFormType';
-
-        // Or for Symfony < 2.8
-        // return 'fos_user_registration';
     }
 
     public function getBlockPrefix()
@@ -25,7 +22,6 @@ class ProfileType extends AbstractType
         return 'fos_user_profile';
     }
 
-    // For Symfony 2.x
     public function getName()
     {
         return $this->getBlockPrefix();
